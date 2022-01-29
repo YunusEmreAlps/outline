@@ -3,6 +3,7 @@ import auth from "@server/middlewares/authentication";
 import { Event, Team } from "@server/models";
 import { authorize } from "@server/policies";
 import { presentTeam, presentPolicies } from "@server/presenters";
+import { assertUuid } from "@server/validation";
 
 const router = new Router();
 
@@ -31,8 +32,10 @@ router.post("team.update", auth(), async (ctx) => {
   if (documentEmbeds !== undefined) team.documentEmbeds = documentEmbeds;
   if (guestSignin !== undefined) team.guestSignin = guestSignin;
   if (avatarUrl !== undefined) team.avatarUrl = avatarUrl;
-  if (preferredCollectionId !== undefined)
+  if (preferredCollectionId !== undefined) {
+    assertUuid(preferredCollectionId, "preferredCollectionId must be uuid");
     team.preferredCollectionId = preferredCollectionId;
+  }
 
   if (collaborativeEditing !== undefined) {
     team.collaborativeEditing = collaborativeEditing;

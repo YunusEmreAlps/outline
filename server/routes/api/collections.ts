@@ -601,6 +601,14 @@ router.post("collections.update", auth(), async (ctx) => {
   // if the privacy level has changed. Otherwise skip this query for speed.
   if (privacyChanged || sharingChanged) {
     await collection.reload();
+    const team = await Team.findByPk(user.teamId);
+
+    if (
+      collection.permission === null &&
+      team?.preferredCollectionId === collection.id
+    ) {
+      await team.update({ preferredCollectionId: null });
+    }
   }
 
   ctx.body = {
@@ -662,12 +670,19 @@ router.post("collections.delete", auth(), async (ctx) => {
   const collection = await Collection.scope({
     method: ["withMembership", user.id],
   }).findByPk(id);
+  const team = await Team.findByPk(user.teamId);
+
   authorize(user, "delete", collection);
 
   const total = await Collection.count();
   if (total === 1) throw ValidationError("Cannot delete last collection");
 
   await collection.destroy();
+
+  if (team && team.preferredCollectionId === collection.id) {
+    await team.update({ preferredCollectionId: null });
+  }
+
   await Event.create({
     name: "collections.delete",
     collectionId: collection.id,
