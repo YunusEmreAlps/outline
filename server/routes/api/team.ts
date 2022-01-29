@@ -33,7 +33,8 @@ router.post("team.update", auth(), async (ctx) => {
   if (guestSignin !== undefined) team.guestSignin = guestSignin;
   if (avatarUrl !== undefined) team.avatarUrl = avatarUrl;
   if (preferredCollectionId !== undefined) {
-    assertUuid(preferredCollectionId, "preferredCollectionId must be uuid");
+    if (preferredCollectionId !== null)
+      assertUuid(preferredCollectionId, "preferredCollectionId must be uuid");
     team.preferredCollectionId = preferredCollectionId;
   }
 
