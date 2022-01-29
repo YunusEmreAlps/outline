@@ -15,6 +15,7 @@ router.post("team.update", auth(), async (ctx) => {
     guestSignin,
     documentEmbeds,
     collaborativeEditing,
+    preferredCollectionId,
     defaultUserRole,
   } = ctx.body;
   const { user } = ctx.state;
@@ -30,6 +31,8 @@ router.post("team.update", auth(), async (ctx) => {
   if (documentEmbeds !== undefined) team.documentEmbeds = documentEmbeds;
   if (guestSignin !== undefined) team.guestSignin = guestSignin;
   if (avatarUrl !== undefined) team.avatarUrl = avatarUrl;
+  if (preferredCollectionId !== undefined)
+    team.preferredCollectionId = preferredCollectionId;
 
   if (collaborativeEditing !== undefined) {
     team.collaborativeEditing = collaborativeEditing;
