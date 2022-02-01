@@ -16,7 +16,7 @@ router.post("team.update", auth(), async (ctx) => {
     guestSignin,
     documentEmbeds,
     collaborativeEditing,
-    preferredCollectionId,
+    defaultCollectionId,
     defaultUserRole,
   } = ctx.body;
   const { user } = ctx.state;
@@ -32,10 +32,10 @@ router.post("team.update", auth(), async (ctx) => {
   if (documentEmbeds !== undefined) team.documentEmbeds = documentEmbeds;
   if (guestSignin !== undefined) team.guestSignin = guestSignin;
   if (avatarUrl !== undefined) team.avatarUrl = avatarUrl;
-  if (preferredCollectionId !== undefined) {
-    if (preferredCollectionId !== null)
-      assertUuid(preferredCollectionId, "preferredCollectionId must be uuid");
-    team.preferredCollectionId = preferredCollectionId;
+  if (defaultCollectionId !== undefined) {
+    if (defaultCollectionId !== null)
+      assertUuid(defaultCollectionId, "defaultCollectionId must be uuid");
+    team.defaultCollectionId = defaultCollectionId;
   }
 
   if (collaborativeEditing !== undefined) {
