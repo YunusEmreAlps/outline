@@ -3206,10 +3206,10 @@
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.8.tgz#b94a4391c85666c7b73299fd3ad79d4faa435310"
   integrity sha512-ipixuVrh2OdNmauvtT51o3d8z12p6LtFW9in7U79der/kwejjdNchQC5UMn5u/KxNoM7VHHOs/l8KS8uHxhODQ==
 
-"@types/throng@^5.0.3":
-  version "5.0.3"
-  resolved "https://registry.yarnpkg.com/@types/throng/-/throng-5.0.3.tgz#01fc3a0e507799d9744f00145f1e38f50f647a9b"
-  integrity sha512-Pt8Bunl40PyFvIcQ5berMYXt0XT94hWI4+5J7Ojl/k9NU75zHJibHUt3oRjiloy4x1rPcX0UJyq+yBjkMmv8zQ==
+"@types/throng@^5.0.4":
+  version "5.0.4"
+  resolved "https://registry.yarnpkg.com/@types/throng/-/throng-5.0.4.tgz#d89173c17c6900c29e8ab964c3e7386972c600c3"
+  integrity sha512-/ILtJTyOCMVQFbcteY5WtMLiESDJkWjXdUfWkXhJZQmLnwvxrdYmfEXdqTb2BkFSrvwWnU63b+jB4O3YOLrClg==
 
 "@types/tmp@^0.2.2":
   version "0.2.2"
